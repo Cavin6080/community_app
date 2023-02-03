@@ -14,12 +14,13 @@ class RecentView extends GetView<RecentController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
+      // physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return GlassmorphicContainer(
           margin: const EdgeInsets.only(top: 10),
           width: 200,
-          height: 250,
+          height: 300,
           borderRadius: 20,
           blur: 20,
           alignment: Alignment.bottomCenter,
@@ -97,13 +98,17 @@ class RecentView extends GetView<RecentController> {
                         ),
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       left: 10,
-                      top: 10,
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        color: Colors.amber,
+                      bottom: 10,
+                      child: CommentsWidget(),
+                    ),
+                    const Positioned(
+                      right: 20,
+                      bottom: 20,
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.white,
                       ),
                     )
                   ],
@@ -113,6 +118,48 @@ class RecentView extends GetView<RecentController> {
           ),
         );
       },
+      itemCount: 10,
+      separatorBuilder: (BuildContext context, int index) {
+        return 20.ph;
+      },
+    );
+  }
+}
+
+class CommentsWidget extends StatelessWidget {
+  const CommentsWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 140,
+      height: 40,
+      decoration: BoxDecoration(
+        color: Colors.black26,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.comment,
+              color: Colors.white,
+            ),
+            4.pw,
+            const Text(
+              "12 comments",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

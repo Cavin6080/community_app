@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/recent/bindings/recent_binding.dart';
 import '../modules/recent/views/recent_view.dart';
 
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.RECENT,
       page: () => const RecentView(),
       binding: RecentBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

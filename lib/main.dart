@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       theme: ThemeData(useMaterial3: true),
-      initialRoute: AppPages.INITIAL,
+      // initialRoute: AppPages.INITIAL,
+      initialRoute: Routes.PROFILE,
       getPages: AppPages.routes,
     );
   }
