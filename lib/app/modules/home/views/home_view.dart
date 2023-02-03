@@ -1,4 +1,5 @@
 import 'package:community_managment/app/extensions/empty_padding_extension.dart';
+import 'package:community_managment/app/modules/recent/views/recent_view.dart';
 import 'package:community_managment/app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 
@@ -144,9 +145,6 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
               child: TabBar(
-                // indicatorColor: Colors.purple,
-                // indicatorPadding: const EdgeInsets.all(10000),
-                // indicatorSize: TabBarIndicatorSize.label,
                 unselectedLabelColor: Colors.red,
                 indicator: BoxDecoration(
                   color: Colors.purple,
@@ -178,13 +176,11 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-            Container(
-              height: 200,
+            const SizedBox(
+              height: 400,
               child: TabBarView(
                 children: [
-                  Center(
-                    child: Text("It's cloudy here"),
-                  ),
+                  RecentView(),
                   Center(
                     child: Text("It's rainy here"),
                   ),
