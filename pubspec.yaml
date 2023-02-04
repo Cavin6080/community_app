@@ -13,6 +13,8 @@ dependencies:
   form_field_validator: ^1.1.0
   glassmorphism_ui: ^0.3.0
   glassmorphism: ^3.0.0
+  dio: ^4.0.6
+  directus: ^0.9.5
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

@@ -11,6 +11,8 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final logic = Get.find<HomeController>();
+    logic.addUsers();
     return DefaultTabController(
       initialIndex: 1,
       length: 3,
