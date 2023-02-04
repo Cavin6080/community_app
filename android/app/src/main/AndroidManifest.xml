@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.span.community_managment">
-   <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
         android:label="community_managment"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -56,7 +56,7 @@ class TextInputField extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText ?? false,
       textInputAction: textInputAction,
-      obscuringCharacter: '*',
+      obscuringCharacter: '•',
       autovalidateMode: AutovalidateMode.disabled,
       controller: editingController,
       keyboardType: textInputType ?? TextInputType.text,

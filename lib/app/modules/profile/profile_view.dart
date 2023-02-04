@@ -1,4 +1,5 @@
 import 'package:community_managment/app/extensions/empty_padding_extension.dart';
+import 'package:community_managment/app/modules/home/controllers/home_controller.dart';
 import 'package:community_managment/app/routes/app_pages.dart';
 import 'package:community_managment/app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
-import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class HomeView extends GetView<HomeController> {
         body: ListView(
           children: [
             const Text(
-              "Hello Nikhil !",
+              "Profile",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 28,
@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
             ),
             5.ph,
             Text(
-              "What's bothering you",
+              "Example",
               style: TextStyle(
                 color: Colors.grey.shade600,
                 fontSize: 18,
@@ -101,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                     width: double.infinity,
                     child: const Center(
                       child: TextInputField(
-                        hinttext: 'Share anything you want',
+                        hinttext: 'Status',
                       ),
                     ),
                   ),
@@ -165,18 +165,18 @@ class HomeView extends GetView<HomeController> {
                   ),
                   Tab(
                       child: Text(
-                    "Friends",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )),
+                        "Friends",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
                   Tab(
                       child: Text(
-                    "Newbies",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )),
+                        "Newbies",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
                 ],
               ),
             ),
@@ -203,12 +203,12 @@ class HomeView extends GetView<HomeController> {
           unselectedLabelStyle: const TextStyle(color: Colors.blue),
           type: BottomNavigationBarType.shifting,
           items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.event_note,color: Colors.blue,),label: 'Events'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_balance_outlined,color: Colors.blue,),label: 'Communities'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_search,color: Colors.blue,),label: 'Connect'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,color: Colors.blue,),label: 'Profile'),
+            BottomNavigationBarItem(icon: Icon(Icons.event_note,color: Colors.blue,),label: 'Events'),
+            BottomNavigationBarItem(icon: Icon(Icons.account_balance_outlined,color: Colors.blue,),label: 'Communities'),
+            BottomNavigationBarItem(icon: Icon(Icons.person_search,color: Colors.blue,),label: 'Connect'),
+            BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,color: Colors.blue,),label: 'Profile'),
 
-        ],),
+          ],),
         floatingActionButton: FloatingActionButton(onPressed: (){
           Get.toNamed(Routes.ADD_EVENT);
         },child: const Icon(Icons.add)),
@@ -234,8 +234,8 @@ class StroyWidget extends StatelessWidget {
         // color: Colors.green,
         border: isStory
             ? Border.all(
-                color: Colors.pink,
-              )
+          color: Colors.pink,
+        )
             : null,
       ),
       child: Container(
