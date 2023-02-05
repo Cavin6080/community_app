@@ -5,7 +5,7 @@ name: Build APK
 on:
   push:
     branches:
-      - feature-ci-cd
+      - main
 
     # on: push    # Default will running for every branch.
 
@@ -21,22 +21,11 @@ jobs:
         with:
           java-version: '11.x'
 
-      - name: Create file
-        run: |
-         ls
-         var=$(ls)
-         echo "Dir $var"
-         cat /Users/runner/work/whatshash-mobile-app/whatshash-mobile-app/android/app/google-services.json | base64
-      - name: Putting data
-        env:
-          DATA: ${{ secrets.GOOGLE_SERVICE_JSON }}
-        run: echo $DATA > /Users/runner/work/whatshash-mobile-app/whatshash-mobile-app/android/app/google-services.json
-
-      # Setup the flutter environment.
+# Setup the flutter environment.
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          flutter-version: '3.0.1'
+          flutter-version: '3.3.9'
 
       # Get flutter dependencies.
       - run: flutter pub get
