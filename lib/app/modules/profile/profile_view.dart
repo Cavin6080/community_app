@@ -1,18 +1,19 @@
 import 'package:community_managment/app/extensions/empty_padding_extension.dart';
-import 'package:community_managment/app/modules/home/controllers/home_controller.dart';
+import 'package:community_managment/app/modules/profile/controllers/profile_controller.dart';
 import 'package:community_managment/app/routes/app_pages.dart';
+import 'package:community_managment/app/widgets/scale_animation.dart';
 import 'package:community_managment/app/widgets/textfield.dart';
+import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
+class ProfileView extends GetView<ProfileController> {
+  const ProfileView({Key? key}) : super(key: key);
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final logic = Get.find<HomeController>();
+    final logic = Get.find<ProfileController>();
     return DefaultTabController(
       initialIndex: 1,
       length: 3,
@@ -20,23 +21,17 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Colors.black87,
         appBar: AppBar(
           title: const Text(
-            'About life',
+            'User',
             style: TextStyle(color: Colors.white),
           ),
+          leading: const Icon(Icons.arrow_back_ios,color: Colors.white,),
           centerTitle: false,
           backgroundColor: Colors.black87,
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.adb,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.adb,
+                Icons.help_outline,
                 color: Colors.white,
               ),
             ),
@@ -109,109 +104,43 @@ class HomeView extends GetView<HomeController> {
               ],
             ),
             10.ph,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                StroyWidget(isStory: true),
-                StroyWidget(isStory: true),
-                StroyWidget(isStory: true),
-                StroyWidget(isStory: true),
-              ],
-            ),
-            10.ph,
-            GlassmorphicContainer(
-              width: double.infinity,
-              height: 50,
-              borderRadius: 20,
-              blur: 20,
-              alignment: Alignment.bottomCenter,
-              border: 2,
-              linearGradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    const Color(0xFFffffff).withOpacity(0.2),
-                    const Color(0xFFFFFFFF).withOpacity(0.05),
-                  ],
-                  stops: const [
-                    0.1,
-                    1,
-                  ]),
-              borderGradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  const Color(0xFFffffff).withOpacity(0),
-                  const Color(0xFFFFFFFF).withOpacity(0.08),
-                ],
-              ),
-              child: TabBar(
-                // indicatorColor: Colors.purple,
-                // indicatorPadding: const EdgeInsets.all(10000),
-                // indicatorSize: TabBarIndicatorSize.label,
-                unselectedLabelColor: Colors.red,
-                indicator: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                tabs: const [
-                  Tab(
-                    child: Text(
-                      "Recent",
-                      style: TextStyle(
-                        color: Colors.white,
+            CustomAnimatedScale(
+              onTap: () async {
+                controller.isParticle = true;
+                await Future.delayed(const Duration(seconds: 2)).then(
+                  (value) => controller.logout(context),
+                );
+                // controller.logout(context);
+              },
+              child: Obx(
+                () => FadeOutParticle(
+                  disappear: controller.isParticle,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 60),
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF491CCB),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Logout",
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Colors.white,
+                            ),
                       ),
                     ),
                   ),
-                  Tab(
-                      child: Text(
-                        "Friends",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      )),
-                  Tab(
-                      child: Text(
-                        "Newbies",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      )),
-                ],
+                ),
               ),
             ),
-            Container(
-              height: 200,
-              child: const TabBarView(
-                children: [
-                  Center(
-                    child: Text("It's cloudy here"),
-                  ),
-                  Center(
-                    child: Text("It's rainy here"),
-                  ),
-                  Center(
-                    child: Text("It's sunny here"),
-                  ),
-                ],
-              ),
-            ),
+            // TextButton(
+            //   onPressed: () => controller.logout(context),
+            //   child: const Text("LogOut"),
+            // ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(color: Colors.blue),
-          unselectedLabelStyle: const TextStyle(color: Colors.blue),
-          type: BottomNavigationBarType.shifting,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.event_note,color: Colors.blue,),label: 'Events'),
-            BottomNavigationBarItem(icon: Icon(Icons.account_balance_outlined,color: Colors.blue,),label: 'Communities'),
-            BottomNavigationBarItem(icon: Icon(Icons.person_search,color: Colors.blue,),label: 'Connect'),
-            BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,color: Colors.blue,),label: 'Profile'),
-
-          ],),
-        floatingActionButton: FloatingActionButton(onPressed: (){
-          Get.toNamed(Routes.ADD_EVENT);
-        },child: const Icon(Icons.add)),
       ),
     );
   }
@@ -219,6 +148,7 @@ class HomeView extends GetView<HomeController> {
 
 class StroyWidget extends StatelessWidget {
   final bool isStory;
+
   const StroyWidget({
     Key? key,
     this.isStory = false,
@@ -234,8 +164,8 @@ class StroyWidget extends StatelessWidget {
         // color: Colors.green,
         border: isStory
             ? Border.all(
-          color: Colors.pink,
-        )
+                color: Colors.pink,
+              )
             : null,
       ),
       child: Container(

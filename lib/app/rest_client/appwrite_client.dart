@@ -45,9 +45,9 @@ class AppWriteAuthClient {
   //   return UserData.fromMap(res);
   // }
   //
-  // Future logout() async {
-  //   await _account.deleteSessions();
-  // }
+  Future logout() async {
+    await _account.deleteSessions();
+  }
   //
   // Future<UserData> updateName({
   //   required String name,

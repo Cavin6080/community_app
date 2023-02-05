@@ -1,5 +1,7 @@
 import 'package:community_managment/app/modules/add_event/bindings/add_event_binding.dart';
 import 'package:community_managment/app/modules/add_event/views/add_event_view.dart';
+import 'package:community_managment/app/modules/profile/bindings/profile_binding.dart';
+import 'package:community_managment/app/modules/profile/profile_view.dart';
 import 'package:community_managment/app/modules/sign_in/binding.dart';
 import 'package:community_managment/app/modules/sign_in/view.dart';
 import 'package:community_managment/app/modules/sign_up/binding.dart';
@@ -39,6 +41,11 @@ class AppPages {
       name: _Paths.ADD_EVENT,
       page: () => const AddEventView(),
       binding: AddEventBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

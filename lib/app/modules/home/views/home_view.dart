@@ -27,16 +27,11 @@ class HomeView extends GetView<HomeController> {
           backgroundColor: Colors.black87,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.PROFILE);
+              },
               icon: const Icon(
-                Icons.adb,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.adb,
+                Icons.account_circle_outlined,
                 color: Colors.white,
               ),
             ),
@@ -198,17 +193,6 @@ class HomeView extends GetView<HomeController> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(color: Colors.blue),
-          unselectedLabelStyle: const TextStyle(color: Colors.blue),
-          type: BottomNavigationBarType.shifting,
-          items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.event_note,color: Colors.blue,),label: 'Events'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_balance_outlined,color: Colors.blue,),label: 'Communities'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_search,color: Colors.blue,),label: 'Connect'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,color: Colors.blue,),label: 'Profile'),
-
-        ],),
         floatingActionButton: FloatingActionButton(onPressed: (){
           Get.toNamed(Routes.ADD_EVENT);
         },child: const Icon(Icons.add)),
