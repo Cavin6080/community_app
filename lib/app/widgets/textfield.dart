@@ -52,7 +52,7 @@ class TextInputField extends StatelessWidget {
       maxLength: maxLength ?? 100,
       style: const TextStyle(color: Color(0xFF491CCB)),
       enabled: enabled ?? true,
-      validator: validator ?? MultiValidator([]),
+      validator: validator??MultiValidator([]),
       onChanged: onChanged,
       obscureText: obscureText ?? false,
       textInputAction: textInputAction,

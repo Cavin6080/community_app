@@ -23,6 +23,7 @@ class SignUpLogic extends GetxController {
 
 
   Future<void> signUp(BuildContext context) async {
+    if(signUpFormKey.currentState!.validate()){
     try {
       isLoading = true.obs;
       final user = AppWriteAuthClient.instance?.signup(userID: 'unique()', name: usernameController.value.text, email: emailController.value.text, password: passwordController.value.text);
@@ -39,7 +40,7 @@ class SignUpLogic extends GetxController {
     }
     catch (e) {
       print(e);
-    }
+    }}
   }
 
   void togglePassword(){

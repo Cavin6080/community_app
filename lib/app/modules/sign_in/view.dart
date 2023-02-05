@@ -6,6 +6,7 @@ import 'package:community_managment/app/routes/app_pages.dart';
 import 'package:community_managment/app/widgets/fade_animation.dart';
 import 'package:community_managment/app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -141,6 +142,7 @@ class SignInView extends GetView<SignInController> {
                                     controller.emailController,
                                     textInputType: TextInputType.emailAddress,
                                     textInputAction: TextInputAction.next,
+                                    validator: MultiValidator([EmailValidator(errorText: "This field is required"),RequiredValidator(errorText: "This field is required")]),
                                     // validator:
                                     // controller.formValidations?.validation(
                                     //   type: "email",
@@ -178,6 +180,7 @@ class SignInView extends GetView<SignInController> {
                                       //   multiValidator: MultiValidator([]),
                                       //   isRequired: true,
                                       // ),
+                                    validator: MultiValidator([RequiredValidator(errorText: "This field is required")]),
                                     ),
 
                                 )

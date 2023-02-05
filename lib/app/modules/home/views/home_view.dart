@@ -20,10 +20,12 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         backgroundColor: Colors.black87,
         appBar: AppBar(
-          title: const Text(
-            'About life',
-            style: TextStyle(color: Colors.white),
+          title: Text(
+            'HTF Community',
+            style: TextStyle(color: Colors.white).copyWith(fontSize: 14),
           ),
+          titleSpacing: 0,
+          leadingWidth: 12,
           centerTitle: false,
           backgroundColor: Colors.black87,
           actions: [
@@ -39,9 +41,10 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         body: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           children: [
             const Text(
-              "Hello Nikhil !",
+              "Hello Nikhil!",
               style: titleTextStyle,
             ),
             5.ph,
@@ -142,7 +145,7 @@ class HomeView extends GetView<HomeController> {
                 tabs: const [
                   Tab(
                     child: Text(
-                      "Recent",
+                      "Upcoming",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -150,14 +153,14 @@ class HomeView extends GetView<HomeController> {
                   ),
                   Tab(
                       child: Text(
-                        "Friends",
+                        "Past",
                         style: TextStyle(
                           color: Colors.white,
                         ),
                       )),
                   Tab(
                       child: Text(
-                        "Newbies",
+                        "Workshops",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -188,7 +191,14 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: (){
-          Get.toNamed(Routes.ADD_EVENT);
+          // Get.toNamed(Routes.ADD_EVENT);
+          if (controller.animationController.status == AnimationStatus.forward ||
+              controller.animationController.status == AnimationStatus.completed) {
+            controller.animationController.reverse();
+          } else {
+            controller.animationController.forward();
+            Get.toNamed(Routes.ADD_EVENT);
+          }
         },child: const Icon(Icons.add)),
       ),
     );

@@ -186,12 +186,12 @@ class SignUpView extends GetView<SignUpLogic> {
                                     obscureText: controller.obscureText,
                                     onTogglePassword: () =>
                                         controller.togglePassword(),
-                                    // validator: controller.formValidations
-                                    //     ?.validation(
-                                    //   type: "password",
-                                    //   multiValidator: MultiValidator([]),
-                                    //   isRequired: true,
-                                    // ),
+                                    validator: controller.formValidations
+                                        ?.validation(
+                                      type: "password",
+                                      multiValidator: MultiValidator([]),
+                                      isRequired: true,
+                                    ),
                                   ),
                                 )
                               ],

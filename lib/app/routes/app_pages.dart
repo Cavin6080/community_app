@@ -10,13 +10,14 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/onboarding/views/onboarding_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.ONBOARDING;
   static const SIGN_UP = Routes.SIGN_UP;
   static const SIGN_IN = Routes.SIGN_IN;
   static const ADD_EVENT = Routes.ADD_EVENT;
@@ -26,6 +27,10 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => const OnboardingView(),
     ),
     GetPage(
       name: _Paths.SIGN_UP,

@@ -1,9 +1,12 @@
 import 'package:community_managment/app/rest_client/dio_client.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with GetSingleTickerProviderStateMixin {
   late final RestClient client;
+  late final AnimationController animationController;
+  late final Animation<double> animation;
 
   //TODO: Implement HomeController
 
@@ -14,6 +17,14 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1000),
+    );
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeIn,
+    );
   }
 
   @override

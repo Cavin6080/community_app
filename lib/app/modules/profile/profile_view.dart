@@ -24,7 +24,7 @@ class ProfileView extends GetView<ProfileController> {
             'User',
             style: TextStyle(color: Colors.white),
           ),
-          leading: const Icon(Icons.arrow_back_ios,color: Colors.white,),
+          leading: GestureDetector(onTap: (){Get.back();},child: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
           centerTitle: false,
           backgroundColor: Colors.black87,
           actions: [
@@ -38,6 +38,7 @@ class ProfileView extends GetView<ProfileController> {
           ],
         ),
         body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 12),
           children: [
             const Text(
               "Profile",
