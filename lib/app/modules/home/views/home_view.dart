@@ -1,4 +1,6 @@
 import 'package:community_managment/app/extensions/empty_padding_extension.dart';
+import 'package:community_managment/app/extensions/text_theme.dart';
+import 'package:community_managment/app/modules/home/views/recent_view.dart';
 import 'package:community_managment/app/routes/app_pages.dart';
 import 'package:community_managment/app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,8 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final logic = Get.find<HomeController>();
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.black87,
@@ -41,20 +42,12 @@ class HomeView extends GetView<HomeController> {
           children: [
             const Text(
               "Hello Nikhil !",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28,
-                fontWeight: FontWeight.w500,
-              ),
+              style: titleTextStyle,
             ),
             5.ph,
             Text(
               "What's bothering you",
-              style: TextStyle(
-                color: Colors.grey.shade600,
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
+              style: lableGreyTextStyle,
             ),
             10.ph,
             Row(
@@ -74,16 +67,17 @@ class HomeView extends GetView<HomeController> {
                     alignment: Alignment.bottomCenter,
                     border: 2,
                     linearGradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          const Color(0xFFffffff).withOpacity(0.2),
-                          const Color(0xFFFFFFFF).withOpacity(0.05),
-                        ],
-                        stops: const [
-                          0.1,
-                          1,
-                        ]),
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFffffff).withOpacity(0.2),
+                        const Color(0xFFFFFFFF).withOpacity(0.05),
+                      ],
+                      stops: const [
+                        0.1,
+                        1,
+                      ],
+                    ),
                     borderGradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -92,7 +86,6 @@ class HomeView extends GetView<HomeController> {
                         const Color(0xFFFFFFFF).withOpacity(0.08),
                       ],
                     ),
-                    // color: Colors.amber,
                     width: double.infinity,
                     child: const Center(
                       child: TextInputField(
@@ -141,9 +134,6 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
               child: TabBar(
-                // indicatorColor: Colors.purple,
-                // indicatorPadding: const EdgeInsets.all(10000),
-                // indicatorSize: TabBarIndicatorSize.label,
                 unselectedLabelColor: Colors.red,
                 indicator: BoxDecoration(
                   color: Colors.purple,
@@ -160,33 +150,37 @@ class HomeView extends GetView<HomeController> {
                   ),
                   Tab(
                       child: Text(
-                    "Friends",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )),
+                        "Friends",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
                   Tab(
                       child: Text(
-                    "Newbies",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )),
+                        "Newbies",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )),
                 ],
               ),
             ),
-            Container(
-              height: 200,
-              child: const TabBarView(
+            const SizedBox(
+              height: 600,
+              child: TabBarView(
                 children: [
+                  RecentView(),
                   Center(
-                    child: Text("It's cloudy here"),
+                    child: Text(
+                      "It's friends page",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   Center(
-                    child: Text("It's rainy here"),
-                  ),
-                  Center(
-                    child: Text("It's sunny here"),
+                    child: Text(
+                      "It's newbies page",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -211,21 +205,22 @@ class StroyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
-      width: 45,
+      height: 50,
+      width: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         // color: Colors.green,
         border: isStory
             ? Border.all(
-                color: Colors.pink,
-              )
+          color: Colors.pink,
+          width: 2,
+        )
             : null,
       ),
       child: Container(
         margin: isStory ? const EdgeInsets.all(5) : EdgeInsets.zero,
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
       ),
